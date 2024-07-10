@@ -1,0 +1,38 @@
+---
+fail_fast: true
+repos:
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.5
+    hooks:
+      - id: remove-crlf
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: check-yaml
+      - id: pretty-format-json
+        args: ["--autofix"]
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.28.1
+    hooks:
+      - id: check-jsonschema
+        name: "Check GitHub Workflows"
+        files: ^\.github/workflows/[^/]+$
+        types: [yaml]
+        args: ["--schemafile", "https://json.schemastore.org/github-workflow"]
+      - id: check-jsonschema
+        name: "Check Devcontainer"
+        files: ^src/.*/\.devcontainer/devcontainer.json
+        args: ["--schemafile", "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.base.schema.json"]
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev:  v0.40.0
+    hooks:
+      - id: markdownlint-fix
+        name: markdownlint-fix
+        args: ['--fix']
+        files: \.(md|markdown)$
+        exclude: 'CHANGELOG.md|docs/index.md'
+        minimum_pre_commit_version: 0.15.0
