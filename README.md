@@ -97,7 +97,7 @@ export SPEECH_REGION='your_region'
 ## Conclusion
 
 By following these instructions, you can set up a clean and conflict-free
-environment for using the Azure Cognitive Services Speech SDK.If you encounter
+environment for using the Azure Cognitive Services Speech SDK. If you encounter
 any issues, ensure all dependencies are correctly installed and that your
 environment variables are set properly.
 
