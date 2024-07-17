@@ -4,7 +4,7 @@ This module converts text to speech using Azure Cognitive Services.
 
 from pathlib import Path
 import os
-import azure.cognitiveservices.speech as speechsdk
+import azure.cognitiveservices.speech as speechsdk # type: ignore
 
 # Paths
 base_folder_path = Path(__file__).parent
