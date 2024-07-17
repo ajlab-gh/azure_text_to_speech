@@ -1,8 +1,3 @@
-# docker-template
-
-```bash
-pre-commit install
-```
 
 # Introduction
 
@@ -13,40 +8,100 @@ Turn text into lifelike spoken audio using Azure Speech Services's TTS
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/my-template-repo.git
-   cd my-template-repo
+   git clone https://github.com/AJLab-GH/azure_text_to_speech.git
+   cd azure_text_to_speech
+
+## docker-template
+
+```bash
+pre-commit install
+```
+
+---
+
+## Azure Cognitive Services Speech SDK Setup Guide
+
+Newer versions of the Azure Cognitive Services Speech SDK may have
+conflicts with SSL and Python libraries. To create an environment
+without these conflicts, it is recommended to use a virtual environment,
+such as Conda. Follow the setup instructions below to create and configure
+your Conda environment.
 
 ## Prerequisites
 
-Before you get started, here's a list of prerequisites:
+Ensure you have Conda installed. You can download and install it from:
+[Anaconda](https://www.anaconda.com/products/distribution) or,
+[Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
-* A subscription key for the Speech service. See [Try the speech service for free](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started).
-* On Windows and Linux Python 3.6 or later needs to be installed. On Mac, minimum version for Python is 3.7. Downloads are available [here](https://www.python.org/downloads/).
-* The Python Speech SDK package is available for Windows (x64 and x86), Mac x64 (macOS X version 10.14 or later), Mac arm64 (macOS version 11.0 or later), and [specific Linux distributions and target architectures](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux).
-* On Ubuntu or Debian, run the following commands for the installation of required packages:
-  ```sh
-  sudo apt-get update
-  sudo apt-get install libssl-dev libasound2
-  ```
+## Setup Instructions
 
-* On RHEL or CentOS, run the following commands for the installation of required packages:
-  ```sh
-  sudo yum update
-  sudo yum install alsa-lib openssl python3
-  ```
+### 1. Create a Conda Environment
 
-  * See also [how to configure RHEL/CentOS 7 for Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7).
+Create a new Conda environment with Python 3.9:
 
-* On Windows you need the [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) for your platform.
+```bash
+conda create --name azure_speech_env python=3.9
+```
 
-## Get the Speech SDK Python Package
+### 2. Activate the Conda Environment
 
-**By downloading the Microsoft Cognitive Services Speech SDK, you acknowledge its license, see [Speech SDK license agreement](https://aka.ms/csspeech/license).**
+Activate the newly created environment:
 
-The Cognitive Services Speech SDK Python package can be installed from [pyPI](https://pypi.org/) using this command:
+```bash
+conda activate azure_speech_env
+```
 
-```sh
+### 3. Install Required Packages
+
+Install the Azure Cognitive Services Speech SDK and other necessary packages:
+
+```bash
+conda install pip
 pip install azure-cognitiveservices-speech
 ```
 
-Note: this tutorial will not work without changes for any version earlier than 1.7.0 of the SDK.
+### 4. Verify the Installation
+
+List the installed packages to ensure everything is set up correctly:
+
+```bash
+conda list
+```
+
+### Recreating the Environment from YAML
+
+To recreate the environment from the `environment.yaml` file:
+
+```bash
+conda env create -f environment.yaml
+```
+
+Activate the new environment:
+
+```bash
+conda activate azure_speech_env
+```
+
+## Environment Variables
+
+Set the environment variables for your Azure Cognitive Services subscription
+key and region. You can do this in your terminal or within your script.
+
+### Setting Environment Variables in Terminal
+
+```bash
+export SPEECH_KEY='your_subscription_key'
+export SPEECH_REGION='your_region'
+```
+
+## Conclusion
+
+By following these instructions, you can set up a clean and conflict-free
+environment for using the Azure Cognitive Services Speech SDK.If you encounter
+any issues, ensure all dependencies are correctly installed and that your
+environment variables are set properly.
+
+---
+
+This README provides a comprehensive guide for setting up the Azure Speech SDK
+in a Conda environment, covering all necessary steps and potential issues.
