@@ -35,39 +35,6 @@ Ensure you have Conda installed. You can download and install it from:
 
 ## Setup Instructions
 
-### 1. Create a Conda Environment
-
-Create a new Conda environment with Python 3.9:
-
-```bash
-conda create --name azure_speech_env python=3.9
-```
-
-### 2. Activate the Conda Environment
-
-Activate the newly created environment:
-
-```bash
-conda activate azure_speech_env
-```
-
-### 3. Install Required Packages
-
-Install the Azure Cognitive Services Speech SDK and other necessary packages:
-
-```bash
-conda install pip
-pip install azure-cognitiveservices-speech
-```
-
-### 4. Verify the Installation
-
-List the installed packages to ensure everything is set up correctly:
-
-```bash
-conda list
-```
-
 ### Recreating the Environment from YAML
 
 To recreate the environment from the `environment.yaml` file:
@@ -93,6 +60,13 @@ key and region. You can do this in your terminal or within your script.
 export SPEECH_KEY='your_subscription_key'
 export SPEECH_REGION='your_region'
 ```
+
+## Using this Speech SDK
+
+To use this SDK, you'll make your changes to the tts.py file. Enter the text you
+wish to convert to speech in the multi-line string corresponding to "TEXT_INPUT".
+You'll also want to increase the filename when you are satisfied with the audio
+and ready to move onto creating the next element in your TTS.
 
 ## Conclusion
 
